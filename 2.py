@@ -39,3 +39,38 @@ if __name__=='__main__':
         init_db()
         add_logs("2026-6-26","sql",2,"学习SQL基础语法")
         print(get_logs())
+
+
+def get_logs_by_subject(subject):
+        conn=sqlite3.connect(db_name)
+        cursor=conn.cursor()
+        cursor.execute("select * from study_logs where subject=?", (subject,))
+        logs=cursor.fetchall()
+        conn.close()
+        return logs
+
+
+
+def get_total_hours():
+        conn=sqlite3.connect(db_name)
+        cursor=conn.cursor()
+        cursor.execute("select sum(hours) from study_logs")
+        logs=cursor.fetchall()
+        conn.close()
+        return logs
+
+
+def get_weekly_hours():
+        conn=sqlite3.connect(db_name)
+        cursor=conn.cursor()
+        cursor.execute("select sum(hours) from study_logs where data >= date('now', '-7 days')")
+        logs=cursor.fetchall()
+        conn.close()
+        return logs
+
+
+
+
+
+
+
