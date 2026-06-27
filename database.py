@@ -1,7 +1,7 @@
 # 数据库操作模块（原 2.py，因 Python 不允许数字开头的模块名而改名）
 import sqlite3
 
-db_name='study.db'
+db_name='study_logs.db'
 
 def init_db():
         conn=sqlite3.connect(db_name)
