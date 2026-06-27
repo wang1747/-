@@ -1,3 +1,4 @@
+# 从 database 模块导入所有数据库操作函数
 from database import *
 
 def main():
@@ -31,6 +32,7 @@ def main():
                 else:
                         print("无效选择，请重新输入。")
 
+# 程序入口：先初始化数据库，再启动菜单
 if __name__ == '__main__':
     init_db()
     main()

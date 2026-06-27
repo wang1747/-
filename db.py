@@ -1,3 +1,4 @@
+# 直接操作数据库的脚本：建表并插入一条测试数据
 import sqlite3
 
 conn=sqlite3.connect('study.db')
