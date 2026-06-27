@@ -8,12 +8,12 @@ init_db()
 
 @app.get("/")
 def read_root():
-    return {"message":"Study Log API is running"}}
+    return {"message":"Study Log API is running"}
 
 
 @app.post("/logs")
 def create_log(log: LogCreate):
-    add_logs(log.date, log.content,log.duration)
+    add_logs(log.date, log.subject, log.hours, log.notes)
     return {"message": "Log added successfully"}
 
 

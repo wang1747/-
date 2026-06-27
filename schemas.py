@@ -5,15 +5,17 @@ from pydantic import BaseModel
 
 class LogCreate(BaseModel):
         date: str
-        content: str
-        duration: float
+        subject: str
+        hours: float
+        notes: str = ""
 
 
 class LogOut(BaseModel):
         id: int
         date: str
-        content: str
-        duration: float
+        subject: str
+        hours: float
+        notes: str
 
 
 
