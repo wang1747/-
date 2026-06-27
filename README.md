@@ -6,21 +6,19 @@
 
 | 文件 | 说明 |
 |------|------|
-| `菜单.py` | 主程序入口，提供交互式菜单界面 |
-| `database.py` | 数据库操作模块（原 `2.py`），封装建表、增删改查等函数 |
-| `db.py` | 独立的建表+插入测试数据脚本 |
+| `main.py` | 主程序入口，提供交互式菜单界面 |
+| `database.py` | 数据库操作模块，封装建表、增删改查等函数 |
+| `schemas.py` | Pydantic 数据模型 |
+| `requirements.txt` | 项目依赖 |
 
 ## 运行方式
 
 ```bash
 # 启动菜单程序
-python 菜单.py
+python main.py
 
 # 单独测试数据库模块
 python database.py
-
-# 单独执行建表并插入测试数据
-python db.py
 ```
 
 ## 功能
@@ -32,3 +30,10 @@ python db.py
 5. 查看本周学习时间
 
 还没有实现输入相同数据提醒的功能，可能会有大量重复数据
+
+## API 模式
+
+```bash
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
