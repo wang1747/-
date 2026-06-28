@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from database import init_db,add_logs,get_logs
 from schemas import LogCreate,LogOut
+from database import get_daily_hours
+
 
 app=FastAPI()
 
@@ -21,3 +23,11 @@ def create_log(log: LogCreate):
 def read_logs():
     logs=get_logs()
     return logs
+
+
+@app.get("/logs/daily")
+def read_daily_logs():
+    logs=get_daily_hours()
+    return logs
+
+

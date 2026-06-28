@@ -72,5 +72,36 @@ def get_weekly_hours():
         return logs
 
 
+def update_logs(log_id, date, subject, hours, notes):
+        conn=sqlite3.connect(db_name)
+        cursor=conn.cursor()
+        cursor.execute("update study_logs set data=?, subject=?, hours=?, notes=? where id=?",
+                       (date, subject, hours, notes, log_id))
+        conn.commit()
+        conn.close()
 
 
+def delete_logs(log_id):
+        conn=sqlite3.connect(db_name)
+        cursor=conn.cursor()
+        cursor.execute("delete from study_logs where id=?", (log_id,))
+        conn.commit()
+        conn.close()
+
+
+def get_daily_hours():
+        conn=sqlite3.connect(db_name)
+        cursor=conn.cursor()
+        cursor.execute('''
+        select data,sum(hours) as total_hours 
+        from study_logs 
+        group by data
+        ''')
+        logs=cursor.fetchall()
+        conn.close()
+        return [
+                {
+                        "date": log[0],
+                        "total_hours": log[1]
+                } for log in logs  
+        ]
