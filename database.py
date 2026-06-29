@@ -1,6 +1,7 @@
 # 数据库操作模块（原 2.py，因 Python 不允许数字开头的模块名而改名）
 #负责数据库操作
 import sqlite3
+from typing import Optional
 
 db_name='study_logs.db'
 
@@ -61,6 +62,15 @@ def get_total_hours():
         logs=cursor.fetchall()
         conn.close()
         return logs
+
+
+def get_log_by_id(log_id: int):
+        conn=sqlite3.connect(db_name)
+        cursor=conn.cursor()
+        cursor.execute("select * from study_logs where id=?", (log_id,))
+        log=cursor.fetchone()
+        conn.close()
+        return log
 
 
 def get_weekly_hours():

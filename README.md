@@ -28,6 +28,7 @@ python database.py
 3. 按科目筛选记录
 4. 查看总学习时间
 5. 查看本周学习时间
+6. 查看每日学习时间（按日期分组汇总）
 
 还没有实现输入相同数据提醒的功能，可能会有大量重复数据
 
@@ -37,3 +38,12 @@ python database.py
 pip install -r requirements.txt
 uvicorn main:app --reload
 ```
+
+### API 端点
+
+| 方法 | 路径 | 说明 |
+|------|------|------|
+| GET | `/` | 服务状态检查 |
+| POST | `/logs` | 添加学习记录 |
+| GET | `/logs` | 查看所有记录 |
+| GET | `/logs/daily` | 查看每日学习时间（按日期汇总） |
